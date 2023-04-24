@@ -52,7 +52,7 @@ public class FixCommand implements CommandExecutor {
                             }else{
                                 //von jemandem anderen gefixt
                                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',prefix+" " +
-                                        "&cDas Item wurde bereits von jemand anderem über &e/fix &crepariert, daher kannst du es nicht reparieren."));
+                                        "&cDas Item wurde bereits von jemandem über &e/fix &crepariert, daher kannst du es nicht reparieren."));
                             }
                         }else{
                             //noch ungefixt
@@ -66,7 +66,7 @@ public class FixCommand implements CommandExecutor {
                             /* Set Tag if not exist */
 
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&',prefix+" " +
-                                    "&aDein Item wurde repaiert. Ab sofort kannst nur noch du es verwenden."));
+                                    "&aDein Item wurde repariert. Ab sofort kannst nur noch du es verwenden."));
                         }
 
 
