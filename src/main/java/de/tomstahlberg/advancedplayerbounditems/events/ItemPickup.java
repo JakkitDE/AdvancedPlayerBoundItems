@@ -1,6 +1,7 @@
 package de.tomstahlberg.advancedplayerbounditems.events;
 
 import de.tomstahlberg.advancedplayerbounditems.AdvancedPlayerBoundItems;
+import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -17,6 +18,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.UUID;
 
 public class ItemPickup implements Listener {
+    private String prefix = "&6&lGolden&3&lSky &8x ";
     private static Plugin plugin = AdvancedPlayerBoundItems.plugin;
     @EventHandler
     public void onPickup(EntityPickupItemEvent event){
@@ -36,23 +38,25 @@ public class ItemPickup implements Listener {
         if(persistentDataContainer.has(enchantNamespacedKey, PersistentDataType.STRING)){
             UUID uuid = UUID.fromString(persistentDataContainer.get(enchantNamespacedKey, PersistentDataType.STRING));
             if(uuid.equals(player.getUniqueId())){
-                player.sendMessage("Du hast enchantet und darfst.");
+                //player.sendMessage("Du hast enchantet und darfst.");
                 return true;
             }else{
-                player.sendMessage("Jemand hat enchantet und darfst nicht.");
+                //player.sendMessage("Jemand hat enchantet und darfst nicht.");
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix+"&cDieses Item wurde von einem anderen Spieler via Befehl verändert, daher darfst du es nicht verwenden."));
                 return false;
             }
         }else if(persistentDataContainer.has(fixedNamespacedKey, PersistentDataType.STRING)) {
             UUID uuid = UUID.fromString(persistentDataContainer.get(fixedNamespacedKey, PersistentDataType.STRING));
             if(uuid.equals(player.getUniqueId())){
-                player.sendMessage("Du hast gefixt und darfst.");
+                //player.sendMessage("Du hast gefixt und darfst.");
                 return true;
             }else{
-                player.sendMessage("Jemand hat gefixt und darfst nicht.");
+                //player.sendMessage("Jemand hat gefixt und darfst nicht.");
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix+"&cDieses Item wurde von einem anderen Spieler via Befehl verändert, daher darfst du es nicht verwenden."));
                 return false;
             }
         }else{
-            player.sendMessage("Kein Tag vorhanden, du darfst.");
+            //player.sendMessage("Kein Tag vorhanden, du darfst.");
             return true;
         }
     }
