@@ -3,6 +3,7 @@ package de.tomstahlberg.advancedplayerbounditems;
 import de.tomstahlberg.advancedplayerbounditems.commands.*;
 import de.tomstahlberg.advancedplayerbounditems.events.BlockBreak;
 import de.tomstahlberg.advancedplayerbounditems.events.Interact;
+import de.tomstahlberg.advancedplayerbounditems.events.InventoryClick;
 import de.tomstahlberg.advancedplayerbounditems.events.ItemPickup;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,6 +27,7 @@ public final class AdvancedPlayerBoundItems extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockBreak(), this);
         getServer().getPluginManager().registerEvents(new Interact(), this);
         getServer().getPluginManager().registerEvents(new ItemPickup(), this);
+        getServer().getPluginManager().registerEvents(new InventoryClick(), this);
     }
 
     @Override
