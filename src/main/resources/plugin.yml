@@ -1,0 +1,17 @@
+name: AdvancedPlayerBoundItems
+version: '${project.version}'
+main: de.tomstahlberg.advancedplayerbounditems.AdvancedPlayerBoundItems
+api-version: 1.19
+commands:
+  fix:
+    description: fix command for items
+    permission: advancedplayerbounditems.fix
+  enchant:
+    description: enchant command for items
+    permission: advancedplayerbounditems.enchant
+  adminenchant:
+    description: admin enchant command for items
+    permission: advancedplayerbounditems.adminenchant
+  adminremovetag:
+    description: admin enchant command for items
+    permission: advancedplayerbounditems.adminremovetag
