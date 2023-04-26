@@ -39,6 +39,8 @@ public class BlockBreak implements Listener {
     }
 
     private Boolean canDoEvent(ItemStack itemStack, Player player){
+        if(player.hasPermission("advancedplayerbounditems.bypass") || player.isOp())
+            return true;
         ItemMeta itemMeta = itemStack.getItemMeta();
         PersistentDataContainer persistentDataContainer = itemMeta.getPersistentDataContainer();
         NamespacedKey enchantNamespacedKey = new NamespacedKey(plugin, "EnchantedBy");
