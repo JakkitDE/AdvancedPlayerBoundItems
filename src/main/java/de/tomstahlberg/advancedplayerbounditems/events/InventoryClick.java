@@ -23,22 +23,22 @@ public class InventoryClick implements Listener {
     private static Plugin plugin = AdvancedPlayerBoundItems.plugin;
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event){
-        if(event.getClickedInventory().getType() == InventoryType.ANVIL && event.getSlot() == 2 && event.getClickedInventory().getItem(event.getSlot()) != null){
-            //check both items for existing tags
-            try{
-                ItemStack itemStack1 = event.getClickedInventory().getItem(0);
-                ItemStack itemStack2 = event.getClickedInventory().getItem(1);
-                if(!(anvilItemHasATag(itemStack1) && anvilItemHasATag(itemStack2))){
-                    event.getWhoClicked().sendMessage(ChatColor.translateAlternateColorCodes('&', prefix+"&cDas Item wurde modifiziert und kann nicht im Amboss verwendet werden."));
-                    event.setCancelled(true);
+        if(event.getClickedInventory() != null){
+            if(event.getClickedInventory().getType() == InventoryType.ANVIL && event.getSlot() == 2 && event.getClickedInventory().getItem(event.getSlot()) != null){
+                //check both items for existing tags
+                try{
+                    ItemStack itemStack1 = event.getClickedInventory().getItem(0);
+                    ItemStack itemStack2 = event.getClickedInventory().getItem(1);
+                    if(!(anvilItemHasATag(itemStack1) && anvilItemHasATag(itemStack2))){
+                        event.getWhoClicked().sendMessage(ChatColor.translateAlternateColorCodes('&', prefix+"&cDas Item wurde modifiziert und kann nicht im Amboss verwendet werden."));
+                        event.setCancelled(true);
+                    }
+                }catch(Exception e){
+                    //do nothing cause one of itemstacks perhaps is null. No error.
                 }
-            }catch(Exception e){
-                //do nothing cause one of itemstacks perhaps is null. No error.
+
             }
-
         }
-
-
     }
     private Boolean anvilItemHasATag(ItemStack itemStack){
         ItemMeta itemMeta = itemStack.getItemMeta();
